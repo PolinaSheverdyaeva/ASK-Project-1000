@@ -1,0 +1,12 @@
+target/
+.idea/
+chromedriver
+chromedriver.exe
+geckodriver
+geckodriver.exe
+javaWebdriverCucumber.iml
+ASK.iml
+workspace.xml
+pom.xml
+dependency-reduced-pom.xml
+README.md
