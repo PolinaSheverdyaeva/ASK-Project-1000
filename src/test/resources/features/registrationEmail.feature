@@ -1,6 +1,6 @@
 @Registration
 Feature: Registration - Email
-  @smoke
+  @smoke @regression
   Scenario: Registration - Email - Alphanumeric and special characters
     Given I navigate to registration page
     And I type first name "abc"
@@ -10,8 +10,9 @@ Feature: Registration - Email
     And I type password "12345"
     And I type confirm password "12345"
     And I click on Register Me button
+    #And I click on Cancel Me button
     Then Message "You have been Registered." appears
-
+  @regression
     Scenario: Registration - Email - Email field required, can’t be empty
       Given I navigate to registration page
       And I type first name "abc"
@@ -22,7 +23,7 @@ Feature: Registration - Email
       And I type confirm password "12345"
       And I click on Register Me button
       Then Message "This field is required" appears
-
+  @regression
     Scenario: Registration - Email - Whitespaces are not allowed
       Given I navigate to registration page
       And I type first name "abc"
@@ -33,7 +34,7 @@ Feature: Registration - Email
       And I type confirm password "12345"
       And I click on Register Me button
       Then Message "Should be a valid email address" appears
-
+  @regression
     Scenario: Registration - Email - Whitespaces are not allowed in the middle
       Given I navigate to registration page
       And I type first name "abc"

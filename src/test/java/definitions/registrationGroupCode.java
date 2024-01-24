@@ -68,6 +68,12 @@ public class registrationGroupCode {
         getDriver().findElement(By.xpath("//button[@type='submit']")).click();
     }
 
+//    @And("I click on Cancel Me button")
+//    public void iClickOnCancelMeButton()
+//    {
+//        getDriver().findElement(By.xpath("//button[@type='cancel']")).click();
+//    }
+
     @Then("Message {string} appears")
     public void messageAppears(String textOfMessage) throws InterruptedException
     {

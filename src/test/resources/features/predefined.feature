@@ -10,6 +10,7 @@ Feature: Smoke steps
     When I click on element using JavaScript with xpath "(//input[@name='btnK'])[1]"
     When I wait for element with xpath "//*[@id='res']" to be present
     Then element with xpath "//*[@id='res']" should contain text "Cucumber"
+    And I say hello world
 
   @predefined2
   Scenario: Predefined steps for Bing
@@ -275,7 +276,7 @@ Feature: Smoke steps
     And element with xpath "//b[@name='agreedToPrivacyPolicy']" should have text as "true"
     And element with xpath "//b[@name='email']" should have text as "test@email.com"
     And element with xpath "//b[@name='address']" should contain text "23 Elm St"
-
+    When I write another java step with argument "end-to-end is done"
   @quote9 @quote
   Scenario: Verify 3rd party
     Given I open url "https://skryabin.com/market/quote.html"
