@@ -110,4 +110,33 @@ public class JavaStepDefs {
 
         System.out.println("hello".toUpperCase());
     }
+
+    @And("I print url for {string}")
+    public void iPrintUrlFor(String siteName) {
+////        System.out.println(siteName);
+//        if(siteName.equalsIgnoreCase("google")) {
+//            System.out.println("https://www.google.com/");
+//        } else if(siteName.equalsIgnoreCase("bing")){
+//            System.out.println("https://www.bing.com/");
+//        } else if(siteName.equalsIgnoreCase("quote")) {
+//            System.out.println("https://skryabin.com/market/quote.html");
+//        }else{
+//            System.out.println("Not supported website");
+//        }
+
+        switch (siteName.toLowerCase()){
+            case "google":
+                System.out.println("https://www.google.com/");
+                break;
+            case "bing":
+                System.out.println("https://www.bing.com/");
+                break;
+            case "quote":
+                System.out.println("https://skryabin.com/market/quote.html");
+                break;
+            default:
+                System.out.println("Not supported website" + siteName);
+                break;
+        }
+    }
 }

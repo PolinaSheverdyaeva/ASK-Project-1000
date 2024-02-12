@@ -1,4 +1,4 @@
-package Runners;
+package support;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;

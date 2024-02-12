@@ -232,4 +232,9 @@ public class PredefinedStepDefs {
     public void iMouseOverElementWithXpath(String xpath) {
         new Actions(getDriver()).moveToElement(getDriver().findElement(By.xpath(xpath))).perform();
     }
+
+    @Given("I go to google")
+    public void iGoToGoogle() {
+        getDriver().get("https://www.google.com/");
+    }
 }
