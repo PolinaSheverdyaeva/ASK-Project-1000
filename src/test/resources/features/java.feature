@@ -22,5 +22,18 @@
       And I print url for "bing"
       And I print url for "quote"
       And I print url for "Yahoo"
+      And I print url for "test"
+
+      @java2
+       Scenario: Arrays
+        Given I work with arrays
+
+      @java3
+      Scenario: Maps
+        Given I work with maps
+
+      @java4
+      Scenario: Coding challenges
+        Given I solve coding challenges
 
 

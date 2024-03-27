@@ -5,6 +5,11 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 public class JavaStepDefs {
     @Given("I say hello world")
     public void iSayHelloWorld() {
@@ -80,9 +85,9 @@ public class JavaStepDefs {
 
     @And("I compare length of {string} and {string} into console")
     public void iCompareLengthOfAndIntoConsole(String str1, String str2) {
-        if(str1.length() == str2.length()){
+        if (str1.length() == str2.length()) {
             System.out.println("Strings are the same length");
-        } else{
+        } else {
             System.out.println("Strings are different legth");
         }
 
@@ -98,11 +103,11 @@ public class JavaStepDefs {
         StringBuilder revStr1 = new StringBuilder();
         StringBuilder revStr2 = new StringBuilder();
 
-        for (int i = str1.length() - 1; i >= 0; i--){
+        for (int i = str1.length() - 1; i >= 0; i--) {
             revStr1.append(str1.charAt(i));
         }
 
-        for(int j = str1.length() - 1; j >= 0; j--){
+        for (int j = str1.length() - 1; j >= 0; j--) {
             revStr2.append(str2.charAt(j));
         }
         System.out.println("str1: " + revStr1 + ", " + "str2: " + revStr2);
@@ -124,7 +129,7 @@ public class JavaStepDefs {
 //            System.out.println("Not supported website");
 //        }
 
-        switch (siteName.toLowerCase()){
+        switch (siteName.toLowerCase()) {
             case "google":
                 System.out.println("https://www.google.com/");
                 break;
@@ -135,8 +140,136 @@ public class JavaStepDefs {
                 System.out.println("https://skryabin.com/market/quote.html");
                 break;
             default:
-                System.out.println("Not supported website" + siteName);
+//                System.out.println("Not supported website" + siteName);
+                throw new RuntimeException("Not supported website. Actual :" + siteName);
+        }
+    }
+
+    @Given("I work with arrays")
+    public void iWorkWithArrays() {
+        String[] fruits = {"apple", "plum", "kiwi"};
+        int[] nums = {5, 2, 3, 2, 5};
+
+        System.out.println(fruits[0]);
+        System.out.println(fruits[1]);
+        System.out.println(fruits[2]);
+
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+
+        for (int num : nums) {
+            System.out.println("num: " + num);
+        }
+
+        List<String> myFruits = Arrays.asList("apple", "kiwi");
+        for (String fruit : myFruits) {
+            System.out.println(fruit);
+        }
+
+        Iterator<String> iterator = myFruits.iterator();
+
+        while (iterator.hasNext()) {
+            String fruit = iterator.next();
+            System.out.println("Using iterator: " + fruit);
+        }
+
+        List<Integer> myNumbers = Arrays.asList(5, 2, 3, 2, 5);
+        for (int num : myNumbers) {
+            System.out.println("num " + num);
+        }
+        myNumbers.add(6);
+
+
+    }
+
+    @Given("I work with maps")
+    public void iWorkWithMaps() {
+        Map<String, String> user = Map.of(
+                "username", "jdough",
+                "password", "welcome",
+                "email", "john@doe.com"
+        );
+        Map<String, String> admin = Map.of(
+                "username", "admin",
+                "password", "pass1",
+                "email", "admin@doe.com"
+        );
+        System.out.println(user);
+        System.out.println(admin);
+        System.out.println(user.get("username"));
+        System.out.println(user.get("password"));
+        System.out.println(user.get("email"));
+        System.out.println(admin.get("username"));
+        System.out.println(admin.get("password"));
+        System.out.println(admin.get("email"));
+
+    }
+
+    @Given("I solve coding challenges")
+    public void iSolveCodingChallenges() {
+        swap(3, 5);
+        isDivisible(17);
+        isDivisible2(9);
+        isDivisible2(8);
+        isDivisible2(12);
+        isDivisible2(13);
+    }
+
+    //interview coding task: swap 2 variables values
+    void swap(int a, int b) {
+        System.out.println("Swap function");
+        System.out.println("a: " + a);
+        System.out.println("b: " + b);
+        a = a * b;
+        b = a / b;
+        a = a / b;
+        System.out.println("a: " + a);
+        System.out.println("b: " + b);
+
+        int temp = a;
+        a = b;
+        b = temp;
+        System.out.println("a: " + a);
+        System.out.println("b: " + b);
+
+        a = a + b;
+        b = a - b;
+        a = a - b;
+        System.out.println("a: " + a);
+        System.out.println("b: " + b);
+    }
+
+    void isDivisible(int num) {
+        System.out.println("isDivisible function");
+        if (num % 12 == 0) {
+            System.out.println(num + " divisible by 3 and 4");
+        } else if (num % 3 == 0) {
+            System.out.println(num + " divisible by 3");
+        } else if (num % 4 == 0) {
+            System.out.println(num + " divisible by 4");
+        } else {
+            System.out.println(num + " is not divisible by 3 and 4");
+
+        }
+    }
+
+    void isDivisible2(int num) {
+        System.out.println("isDivisble 2");
+        switch (num % 12) {
+            case 0:
+                System.out.println(num + " divisible by 3 and 4");
+                break;
+            case 3:
+                System.out.println(num + " divisible by 3");
+                break;
+            case 4:
+                System.out.println(num + " divisible by 4");
+                break;
+            default:
+                System.out.println(num + " is not divisible by 3 and 4");
                 break;
         }
     }
 }
+

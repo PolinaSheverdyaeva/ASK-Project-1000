@@ -95,4 +95,9 @@ public class MarketStepDefs {
     public void errorMessageIsNotShown(String errorMessage) {
         assertThat(getDriver().findElement(By.xpath("//label[@id='email-error']")).isDisplayed()).isFalse();
     }
+
+    @Then("I verify that submitted fields saved correctly")
+    public void iVerifyThatSubmittedFieldsSavedCorrectly() {
+        assertThat(getDriver().findElement(By.id("quotePageResult")).getText()).contains("shever");
+    }
 }

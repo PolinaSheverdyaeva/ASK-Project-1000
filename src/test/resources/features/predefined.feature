@@ -156,7 +156,7 @@ Feature: Smoke steps
     When I wait for element with xpath "//*[@id='res']" to be present
     Then element with xpath "//*[@id='res']" should contain text "Cucumber"
 
-  @quote1 @quote
+  @quote1 @quote @smoke
   Scenario: Responsive UI
     Given I open url "https://skryabin.com/market/quote.html"
     When I resize window to 1280 and 1024

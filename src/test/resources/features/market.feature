@@ -28,6 +28,7 @@
       When I type email "text" into email field
       And I submit the form
       Then error message "Please enter a valid email address." should be shown
+      Then I wait for 5 sec
 
     @market5
     Scenario: Verify email field - valid email provided
@@ -35,3 +36,10 @@
       When I type email "text@gmail.com" into email field
       And I submit the form
       Then error message "Please enter a valid email address." is not shown
+
+    @market6
+    Scenario: Verify the required fields
+      Given I go to "quote" page
+      When I fill out required fields
+      And I submit the form
+      Then I verify that submitted fields saved correctly
