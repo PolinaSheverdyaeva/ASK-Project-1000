@@ -43,3 +43,12 @@
       When I fill out required fields
       And I submit the form
       Then I verify that submitted fields saved correctly
+
+    @market7
+    Scenario: Verify optional fields
+      Given I go to "quote" page
+      When I fill out required fields
+      And I fill out optional fields
+      And I submit the form
+      Then I verify that optional submitted fields saved correctly
+

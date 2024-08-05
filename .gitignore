@@ -10,3 +10,6 @@ workspace.xml
 pom.xml
 dependency-reduced-pom.xml
 README.md
+data/
+recruiter.yml
+user.yml

@@ -96,4 +96,6 @@ public class singleChoiceQuestionShowstopper {
     public void iVerifyThatQuizIsDisplayedInMyAssignments(String quizName) {
         assertThat(getDriver().findElement(By.xpath("//mat-card[@class='page mat-card']")).getText().contains(quizName)).isTrue();
     }
+
+
 }
