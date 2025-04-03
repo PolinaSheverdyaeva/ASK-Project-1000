@@ -33,8 +33,6 @@ public class JavaStepDefs {
         System.out.println(firstName.length() + " " + lastName.toUpperCase());
         System.out.println(firstName.isBlank());
         System.out.println(firstName.getClass());
-
-
     }
 
     @When("I say {string}")
@@ -43,7 +41,6 @@ public class JavaStepDefs {
 //        System.out.println(mes);
         System.out.println("Simon says " + mes);
     }
-
 
     @Given("I perform actions with variables {string} and {string}")
     public void iPerformActionsWithVariablesAnd(String str1, String str2) {
@@ -254,6 +251,7 @@ public class JavaStepDefs {
         }
     }
 
+    //don't use switch for this, use if else
     void isDivisible2(int num) {
         System.out.println("isDivisble 2");
         switch (num % 12) {
@@ -269,6 +267,19 @@ public class JavaStepDefs {
             default:
                 System.out.println(num + " is not divisible by 3 and 4");
                 break;
+        }
+    }
+
+    String divBy2and5(int num) {
+        System.out.println("divBy2and5 func with num: " + num);
+        if (num % 2 == 0 && num % 5 == 0){
+            return "div by 2 and 5";
+        } else if (num % 2 == 0) {
+            return "div by 2";
+        } else if (num % 5 == 0) {
+            return "div by 5";
+        } else {
+            return "not div by 2 or 5";
         }
     }
 }

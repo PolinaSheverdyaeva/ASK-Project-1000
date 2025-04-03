@@ -6,7 +6,12 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.ui.Select;
 import support.TestContext;
 
@@ -25,6 +30,9 @@ public class MarketStepDefs {
                 break;
             case "google":
                 getDriver().get("https://www.google.com/");
+                break;
+            case "webstaurantstore":
+                getDriver().get("https://www.webstaurantstore.com/");
                 break;
             default:
 //                System.out.println("Not recognized page " + page);
@@ -181,7 +189,75 @@ Current Time 12:23 am Eastern Daylight Time
 
 Return
  */
+    }
 
+    @And("I print logs to the console")
+    public void iPrintLogsToTheConsole() throws InterruptedException{
+        Thread.sleep(1000);
+        LogEntries logs = getDriver().manage().logs().get("browser");
+        LogEntries logs1 = getDriver().manage().logs().get(LogType.DRIVER);
+        System.out.println(">>>>>>>Browser logs. Begin:");
+        for (LogEntry log : logs){
+            System.out.println(log);
+        }
+        System.out.println(">>>>>>>Browser logs. End");
+    }
+
+    @And("I fill multi-select")
+    public void iFillMultiSelect() {
+        WebElement ford = getDriver().findElement(By.xpath("//select[@name='carMake']/option[@value='Ford']"));
+        WebElement bmw = getDriver().findElement(By.xpath("//select[@name='carMake']/option[@value='BMW']"));
+
+        Actions actions = new Actions(getDriver());
+//        actions
+//                .moveToElement(ford)
+//                .click()
+//                .pause(1000)
+//                .moveToElement(bmw)
+//                .click()
+//                .perform();
+//        actions
+//                .moveToElement(ford)
+//                .click()
+//                .pause(1000)
+//                .keyDown(Keys.CONTROL)
+//                .moveToElement(bmw)
+//                .click()
+//                .perform();
+
+        Actions a = new Actions(getDriver());
+        a.click(ford)
+                .keyDown(Keys.CONTROL)
+                .click(bmw)
+                .perform();
+
+        WebElement carsElement = getDriver().findElement(By.xpath("//select[@name='carMake']"));
+        Select carsSelect = new Select(carsElement);
+        carsSelect.selectByValue("Ford");
+        carsSelect.selectByValue("BMW");
+    }
+
+    @When("I verify Plus Ad is displayed on Homepage")
+    public void iVerifyPlusAdIsDisplayedOnHomepage() {
+        assertThat(getDriver().getCurrentUrl()).isEqualTo("https://www.webstaurantstore.com/");
+        assertThat(getDriver().findElement(By.xpath("//a[@data-track='web-plus-generic-homepage-ad']")).isDisplayed()).isTrue();
+    }
+
+    @And("the Plus Ad has the Plus logo")
+    public void thePlusAdHasThePlusLogo() {
+        assertThat(getDriver().findElement(By.xpath("//img[@alt='Plus Logo']")).isDisplayed()).isTrue();
+    }
+
+
+    @And("the Plus Ad title bolded text is {string}")
+    public void thePlusAdTitleBoldedTextIs(String titleText) {
+        assertThat(((getDriver().findElement(By.xpath("//a[@href='/plus/']//h4[@class='text-2xl font-bold leading-none text-gray-900 mb-1']")))).getText()).isEqualTo(titleText);
+    }
+
+
+    @And("the Plus Ad body text is {string}")
+    public void thePlusAdBodyTextIs(String bodyText) {
+        assertThat(((getDriver().findElement(By.xpath("//a[@href='/plus/']//p[@class='text-sm lg:text-lg font-normal leading-none text-gray-900 mb-3 lg:mb-0']")))).getText()).isEqualTo(bodyText);
     }
 }
 

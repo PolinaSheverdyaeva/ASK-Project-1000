@@ -1,19 +1,14 @@
 package definitions;
 
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static support.TestContext.getDriver;
 
-public class login {
+public class Login {
     @When("I navigate to login page")
     public void iNavigateToLoginPage()
     {

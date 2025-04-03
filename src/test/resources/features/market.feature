@@ -52,3 +52,22 @@
       And I submit the form
       Then I verify that optional submitted fields saved correctly
 
+    @market8
+    Scenario: Printing logs
+      Given I go to "quote" page
+      And I print logs to the console
+
+    @market9
+    Scenario: Multi-select
+      Given I go to "quote" page
+      And I fill multi-select
+
+    @market25
+    Scenario: Verify plus ad for a logged-out user
+      Given I go to "webstaurantstore" page
+      When I verify Plus Ad is displayed on Homepage
+      And the Plus Ad has the Plus logo
+      And the Plus Ad title bolded text is "Unlimited Fast & Free Shipping"
+      And the Plus Ad body text is "Save time and money with Plus"
+
+
